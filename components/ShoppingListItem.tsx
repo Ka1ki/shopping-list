@@ -3,18 +3,17 @@ import THEME from "@/constants/theme";
 
 interface ShoppingListItemProps {
   name: string;
+  onDelete: Function;
 }
 
-export default function ShoppingListItem({ name }: ShoppingListItemProps) {
+export default function ShoppingListItem({
+  name,
+  onDelete,
+}: ShoppingListItemProps) {
   return (
     <View style={style.container}>
       <Text>{name}</Text>
-      <TouchableOpacity
-        onPress={() => {
-          console.log("Deleted");
-        }}
-        style={style.button}
-      >
+      <TouchableOpacity onPress={() => onDelete(name)} style={style.button}>
         <Text style={style.buttonText}>Delete</Text>
       </TouchableOpacity>
     </View>
